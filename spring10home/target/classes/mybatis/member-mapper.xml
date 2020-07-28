@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 회원 -->
+<mapper namespace="member">
+	<insert id="join" parameterType="memberDto">
+		INSERT INTO member
+		VALUES(#{member_id},#{member_pw},#{member_nick},#{post},#{base_addr},#{extra_addr},
+		#{member_birth},#{member_phone},#{member_intro},'일반회원',sysdate,null)
+	</insert>
+
+<!-- 아이디를 이용한 단일조회  -->
+<select id = "get" resultType="memberDto" parameterType="String">
+		select * from member where member_id = #{member_id}
+
+
+</select>
+
+
+
+
+	<select id="select" resultType="memberDto">
+		select * from member order by member_id ASC
+	</select>
+
+</mapper>
+
+<!--  게시판  -->
