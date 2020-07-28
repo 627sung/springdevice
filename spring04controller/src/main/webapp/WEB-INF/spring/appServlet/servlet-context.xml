@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+	xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 스프링 핵심 부푼인 DispatcherServlet이 일아야할 설정을 등록 -->
+
+	<!-- @Controller와 같은 annotation을 활성화 -->
+	<annotation-driven />
+
+
+
+
+
+	<!--base-package에 설정된 패키지와 그 이하 패키지를 감시하여 등록 가능한 도구(Component)를 모두 찾아서 자동 
+		등록하는 설정 -->
+	<context:component-scan
+		base-package="com.kh.spring04" />
+
+
+	<!-- 주소 자동 완성 도구 등록 메번 /WEB-INF/views.ooo.jsp 쓰기 귀찮다 .. 자동완성해줘 -view resolver라는 
+		도구를 등록 (스프링에서 제공해줌) -->
+	<beans:bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+
+
+  <!-- 정작자원은 DispatcherServlet이 처리하면 안된다. 
+  있는 그대로 사전 처리 없이 접근하도록 해야한다 
+  location은 실제위치를 작성
+  mapping은 접근할 주소를 작성 
+  **은 하위 모든 내용을 의미한다. 
+  . -->
+
+  	<resources location="/resources/"  mapping="/resources/**" ></resources>
+  
+
+</beans:beans>
