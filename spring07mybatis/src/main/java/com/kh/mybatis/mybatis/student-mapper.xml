@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+mapper 는 구문을 만들수 있는 영역 
+일반적으로는 테이블 당 1개씩 mapper를 둔다. 
+이름은 xxx-mapper로 짓는다 
+ -->
+ <!--  namespce는 영역을 외부에서 부르기 위한 별칭 -->
+<mapper namespace="student">
+ <insert id="regist" parameterType="com.kh.mybatis.entity.StudentDto">
+ INSERT INTO student VALUES(#{name},#{age},#{score}, sysdate)
+ 
+ </insert>
+</mapper>
