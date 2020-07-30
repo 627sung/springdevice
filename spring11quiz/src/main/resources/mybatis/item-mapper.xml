@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="item">
+
+<insert id="add" parameterType="itemDto">
+INSERT INTO item VALUES(item_seq.nextval,#{name},#{price},#{type},sysdate)
+</insert>
+
+<select id="getlist" resultType="itemDto" >
+ select * from item 
+</select>
+
+<select id="getlist2" resultType="itemDto" parameterType="map">
+
+select * from item order by ${col} ${order}
+</select>
+
+<select id="get" resultType="itemDto" parameterType="int">
+		SELECT * FROM item WHERE no=#{no}
+	</select>
+	
+	
+<delete id="del" parameterType="int">
+delete item where no=#{no}
+</delete>
+
+
+
+</mapper>
+
+
+

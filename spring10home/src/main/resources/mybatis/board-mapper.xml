@@ -2,29 +2,93 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!--  게시글 목록 조회  -->
+
+<!-- 
+	mapper는 구문을 만들 수 있는 영역
+	일반적으로 테이블당 1개씩의 mapper를 둔다
+	
+	- namespace : 영역을 외부에서 부르기 위한 별칭(일반적으로 테이블 이름으로 사용)
+ -->
 <mapper namespace="board">
- <select id = "getlist" resultType="boardDto">
-  select * from board order by board_no ASC
- </select>
 
-<!-- 게시글 목록 검색 $는 정적바인딩 ,#은 동적바인딩  -->
- <select id = "search" resultType="boardDto" parameterType="map">
- Select * from board where instr(${type},#{keyword}) > 0 
- order by board_no DESC 
- </select>
+<!--
+    <insert id="regist" parameterType="com.kh.spring07.entity.StudentDto">
+    
+    </insert>
+    
+    또는
+   
+    <insert id="regist" parameterType="student">
+		INSERT INTO student(
+			name, age, score, when
+		) VALUES(
+			#{name}, #{age}, #{score}, sysdate
+		)
+	</insert>
+-->
 
-
-<select id ="unionList" resultType="boardDto" parameterType="map">
- Select * from board
-    <if test="type != null and keyword != null">
-  where instr(${type},#{keyword}) > 0 
-  </if>
- order by board_no DESC 
-
-</select>
-
-
+	<!-- 게시글 목록 조회(1) - 전부다 -->
+	<select id="getList" resultType="boardDto">
+		SELECT * FROM board 
+		ORDER BY board_no DESC
+	</select>
+	
+	<!-- 게시글 목록 검색 : $는 정적바인딩, #은 동적바인딩 -->
+	<select id="search" resultType="boardDto" parameterType="map">
+		SELECT * FROM board
+		WHERE instr(${type}, #{keyword}) > 0
+		ORDER BY board_no DESC
+	</select>
+	
+	<select id="unionList" resultType="boardDto" parameterType="map">
+		SELECT * FROM board
+		<if test="type != null and keyword != null">
+		WHERE instr(${type}, #{keyword}) > 0
+		</if>
+		ORDER BY board_no DESC
+	</select>
+	
+	<select id="getSeq" resultType="int">
+		SELECT board_seq.nextval FROM dual
+	</select>
+	
+	<insert id="write" parameterType="boardDto">
+		INSERT INTO board(
+			board_no,
+			board_head,
+			board_title,
+			board_writer,
+			board_content,
+			group_no,
+			super_no,
+			depth
+		) VALUES(
+			#{board_no},
+			#{board_head},
+			#{board_title},
+			#{board_writer, jdbcType=VARCHAR},
+			#{board_content},
+			0,null,0
+		)
+	</insert>
+	
+		<select id="get" resultType="boardDto" parameterType="int">
+		SELECT * FROM board WHERE board_no = #{board_no}
+	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="read" parameterType="int">
+		UPDATE board 
+		SET board_read=board_read+1
+		WHERE board_no=#{board_no}
+	</update>
+	
 </mapper>
+
+
+
+
+
+
 
 

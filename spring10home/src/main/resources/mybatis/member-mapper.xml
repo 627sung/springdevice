@@ -2,28 +2,107 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- 회원 -->
+
+<!-- 
+	mapper는 구문을 만들 수 있는 영역
+	일반적으로 테이블당 1개씩의 mapper를 둔다
+	
+	- namespace : 영역을 외부에서 부르기 위한 별칭(일반적으로 테이블 이름으로 사용)
+ -->
 <mapper namespace="member">
-	<insert id="join" parameterType="memberDto">
-		INSERT INTO member
-		VALUES(#{member_id},#{member_pw},#{member_nick},#{post},#{base_addr},#{extra_addr},
-		#{member_birth},#{member_phone},#{member_intro},'일반회원',sysdate,null)
+
+<!--
+    <insert id="regist" parameterType="com.kh.spring07.entity.StudentDto">
+    
+    </insert>
+    
+    또는
+   
+    <insert id="regist" parameterType="student">
+		INSERT INTO student(
+			name, age, score, when
+		) VALUES(
+			#{name}, #{age}, #{score}, sysdate
+		)
 	</insert>
+	
+	알아야 할 설정값
+	- id : 구문을 외부에서 호출하기 위한 식별값
+	- parameterType : 구문을 실행하기 위해 필요한 데이터 유형(매개변수와 유사)
+	- resultType : 구문이 실행된 결과 유형(반환형과 유사)
+-->
 
-<!-- 아이디를 이용한 단일조회  -->
-<select id = "get" resultType="memberDto" parameterType="String">
-		select * from member where member_id = #{member_id}
-
-
-</select>
-
-
-
-
-	<select id="select" resultType="memberDto">
-		select * from member order by member_id ASC
+	
+	<!-- 회원가입 -->
+<!-- 	<insert id="join" parameterType="com.kh.spring10.entity.MemberDto"></insert> -->
+	<insert id="join" parameterType="memberDto">
+		INSERT INTO member(
+			member_id,
+			member_pw,
+			member_nick,
+			post,
+			base_addr,
+			extra_addr,
+			member_birth,
+			member_phone,
+			member_intro,
+			member_auth,
+			member_join,
+			member_login
+		)
+		VALUES(
+			#{member_id},
+			#{member_pw},
+			#{member_nick},
+			#{post},
+			#{base_addr},
+			#{extra_addr},
+			#{member_birth},
+			#{member_phone},
+			#{member_intro},
+			'일반',
+			sysdate,
+			null
+		)
+	</insert>
+	
+	<!-- 아이디를 이용한 단일조회 -->
+	<select id="get" resultType="memberDto" parameterType="string">
+		SELECT * FROM member WHERE member_id = #{member_id}
 	</select>
-
+	
+	<!-- 목록 조회 -->
+	<select id="getList" resultType="memberDto">
+		SELECT * FROM member ORDER BY member_id ASC
+	</select>
+	
+	<!-- 로그인을 위한 SQL 구문 -->
+	<select id="login1" parameterType="memberDto" resultType="int">
+		SELECT 
+			count(*) 
+		FROM 
+			member 
+		WHERE 
+			member_id = #{member_id} 
+				and member_pw = #{member_pw}
+	</select>
+	
+	<select id="login2" parameterType="memberDto" 
+													resultType="memberDto">
+		SELECT 
+			*
+		FROM 
+			member 
+		WHERE 
+			member_id = #{member_id} 
+				and member_pw = #{member_pw}
+	</select>
+	
 </mapper>
 
-<!--  게시판  -->
+
+
+
+
+
+
