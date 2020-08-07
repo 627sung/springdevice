@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<!-- Log4J의 설정파일
+
+[1]Log4J의 메시지 체계 
+ -TRACE :프로그램내에서 발생하는 모든 사소한 작업을 기록한다 .일상적인것들 개발자가 못남긴다 .. 시시콜콜한 변화도 모두 기록한다 .
+ -DEBUG :개발할 떄 필요에 의해서 확인해야할 부분에 대한 기록 (개발종료시 필요가없다.)
+ -INFO  : 사용자에게 알려줘야할 정보에 대한 기록 
+ -WARN  : 실행은 되지만 문제가 생길소지가 있을경우의 기록 ex)수도꼭지 키고 세수하고 안끄고 나감~ 집이 넘치진 않지만 위험함
+ -ERROR : 실행이 안되는 경우의 기록 
+ -FATAL : 시스템에 치명적인 오류의 기록 (작성불가 )
+ 
+ [2]설정 태그와 역할 
+ -logger : 로깅을 수행하기 위한 도구 
+ 
+ -->
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+
+
+
+
+	<!-- Appenders -->
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- Application Loggers -->
+	<logger name="com.kh.spring16">
+		<level value="info" />
+	</logger>
+	
+	<!-- 3rdparty Loggers -->
+	<logger name="org.springframework.core">
+		<level value="info" />
+	</logger>	
+	
+	<logger name="org.springframework.beans">
+		<level value="info" />
+	</logger>
+	
+	<logger name="org.springframework.context">
+		<level value="info" />
+	</logger>
+
+	<logger name="org.springframework.web">
+		<level value="info" />
+	</logger>
+
+	<!-- Root Logger -->
+	<root>
+		<priority value="info" />
+		<appender-ref ref="console" />
+	</root>
+	
+</log4j:configuration>
