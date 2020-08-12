@@ -24,6 +24,12 @@ public class CertDaoImpl implements CertDao {
 		if(result !=null)
 		sqlSession.delete("cert.remove",result);
 		return result !=null;//null 아니면 true리턴 그렇지안하면 false리턴 
+	}
+
+	@Override
+	public void claerAll() {
+		sqlSession.delete("cert.clear");
+		
 	}	
 
 

@@ -7,6 +7,7 @@ import com.kh.spring20.entity.CertDto;
 public interface CertDao {
  void insert(CertDto certDto);
  boolean validate(CertDto certDto);
+ void claerAll();
  
  
 }

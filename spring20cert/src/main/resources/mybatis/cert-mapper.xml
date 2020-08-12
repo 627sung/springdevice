@@ -5,6 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- mapper는 구문을 만들 수 있는 영역 일반적으로 테이블당 1개씩의 mapper를 둔다 - namespace : 영역을 
 	외부에서 부르기 위한 별칭(일반적으로 테이블 이름으로 사용) -->
+
 <mapper namespace="cert">
 
 	<insert id="regist" parameterType="certDto">
@@ -29,12 +30,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   where
   who = #{who}
   and secret = #{secret} 
-  and when between sysdate-10/24/60 and sysdate
+  and when between sysdate-5/24/60 and sysdate
    ]]>
 </select>
 
 <delete id ="remove" parameterType="certDto">
 DELETE cert WHERE who=#{who} and secret=#{secret}
+</delete>
+
+
+<!-- 5분이지난 인증 정보를 삭제하는 구문 -->
+<delete id ="clear" parameterType="certDto">
+ 
+  <![CDATA[
+Delete cert where when < sysdate -5/24/60
+]]>
+
 </delete>
 
 
