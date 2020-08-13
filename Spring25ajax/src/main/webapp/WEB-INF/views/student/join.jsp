@@ -28,7 +28,7 @@
   	  		span.textContent = "사용 가능한 이름입니다";  
   	  	}
   	  	else{
-  	  		span.textContent = "사용하지마세요"; 
+  	  		span.textContent = "사용하지마세요";
   	  	  }
   	  	  
   	  	});

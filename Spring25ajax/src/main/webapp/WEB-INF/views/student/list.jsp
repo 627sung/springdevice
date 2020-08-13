@@ -15,6 +15,8 @@
   	.then(function(response){
   	  	console.log(response.data);
   	  	 
+  	  div.innerHTML = ""
+  	  	
   	  for(var i=0; i<response.data.length; i++){	
   	  	//h3 태그를 만들어서 정보를 설정하고 div에추가 
   	  	var h3 = document.createElement("div");

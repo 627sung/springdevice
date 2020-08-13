@@ -22,16 +22,20 @@
 			
 		}).then(function(response){
 			console.log(response.data);
+			
+			if(response.data.length>0){
 			  for(var i=0; i<response.data.length; i++){	
 			  	  	//h3 태그를 만들어서 정보를 설정하고 div에추가 
-			  	  	var h3 = document.createElement("div");
+			  	  	var h3 = document.createElement("h3");
 			  	  	var name = response.data[i].name;
 			  	  	var score = response.data[i].score;
 
 			  	  	h3.textContent = name+":"+score;
 			  	  	div.appendChild(h3);
 			  	  }
-			
+			}else{
+				div.textContent="데이터없음";
+			}
 		});
 	}
 </script>
