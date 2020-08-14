@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            padding: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        bootstrap 에서는 버튼을 만드는 방법이 3가지가 있다.
+        - a
+        - input
+        - button > 
+            Default : btn
+            Upscale : 
+                btn-primary / btn-outline-primary
+                btn-secondary / btn-outline-secondary
+                btn-info / btn-outline-info
+                btn-success / btn-outline-success
+                btn-warning / btn-outline-warning
+                btn-danger / btn-outline-danger
+                btn-link / btn-outline-link
+    -->
+    <h1>Button Style</h1>
+    <button class="btn btn-primary">Primary Button</button>
+    <button class="btn btn-primary">Primary Button</button>
+
+    <button class="btn btn-secondary">Secondary Button</button>
+    <button class="btn btn-info">info Button</button>
+    <button class="btn btn-success">Success Button</button>
+    <button class="btn btn-warning">Warning Button</button>
+    <button class="btn btn-danger">Danger Button</button>
+    <button class="btn btn-link">Link Button</button>
+
+    <br><hr><br>
+
+    <h1>a Tag Style</h1>
+    <!--a 태그 또한 btn 클래스를 이용해서 버튼처럼 디자인할 수 있다.-->
+    <a href="https://naver.com" class="btn btn-primary">a Tag</a>
+
+    <br><hr><br>
+
+    <!--
+        버튼 크기 조절
+        - btn-lg > large
+        - btn-md > medium
+        - btn-sm > small
+    -->
+    <h1>btn Size</h1>
+    <a href="https://daum.net" class="btn btn-info btn-lg">Daum 라지</a>
+    <a href="https://daum.net" class="btn btn-secondary btn-md">Daum 미디움</a>
+    <a href="https://daum.net" class="btn btn-success btn-sm">Daum 스몰</a>
+    <a href="https://daum.net" class="btn btn-warning">Daum</a>
+
+    <br><hr><br>
+    
+    <!--
+        블록 버튼
+        - btn-block
+    -->
+    <h1>btn Block을 쓰면 꽉차서 나와요</h1>
+    <a href="https://daum.net" class="btn btn-info btn-block">Daum</a>
+
+    <br><hr><br>
+
+    <!--
+        비활성화 버튼
+        - 클릭 불가
+    -->
+    <h1>btn Disabled disabled</h1>
+    <button class="btn btn-primary" disabled>Primary Button</button>
+    <button class="btn btn-secondary" disabled>Secondary Button
+        
+    </button>
+    <button class="btn btn-info" disabled>info Button</button>
+    <button class="btn btn-success" disabled>Success Button</button>
+    <button class="btn btn-warning" disabled>Warning Button</button>
+    <button class="btn btn-danger" disabled>Danger Button</button>
+    <button class="btn btn-link" disabled>Link Button</button>
+
+    <br><hr><br>
+
+    <!--
+        애니메이션 버튼
+        - spinner-border
+    -->
+    <h1>Animation Button</h1>
+    <button class="btn btn-primary">
+        <span class="spinner-border spinner-border-sm"></span>
+        loading...
+    </button>
+    <button class="btn btn-secondary">
+        <span class="spinner-border spinner-border-sm"></span>
+        loading...
+    </button>
+    <button class="btn btn-info">
+        <span class="spinner-border spinner-border-sm"></span>
+        loading...
+    </button>
+    <button class="btn btn-success">
+        <span class="spinner-border spinner-border-sm"></span>
+        loading...
+    </button>
+    <button class="btn btn-warning">
+        <span class="spinner-border spinner-border-sm"></span>
+        loading...
+    </button>
+    <button class="btn btn-danger">
+        <span class="spinner-border spinner-border-sm"></span>
+        loading...
+    </button>
+    <button class="btn btn-link">
+        <span class="spinner-border spinner-border-sm"></span>
+        loading...    
+    </button>
+
+    <br><hr><br>
+
+    <!--
+        버튼 그룹
+        - btn-group 이라는 div로 버튼을 감싸면 버튼 그룹이 된다.
+        - 크기 부여 가능
+            - btn-group-lg
+            - btn-group-md
+            - btn-group-sm
+    -->
+    <h1>Button Group  div로 묶는다 </h1>
+    <div class="btn-group btn-group-lg">
+        <button class="btn btn-primary">Button Child</button>   
+        <button class="btn btn-primary">Button Child</button>
+        <button class="btn btn-primary">Button Child</button>
+        <button class="btn btn-primary">Button Child</button>
+    </div>
+
+    <br><hr><br>
+
+    <!--
+        수직 버튼 그룹
+        - btn-group-vertical
+    -->
+    <h3>수직처리(vertical)</h3>
+    <div class="btn-group-vertical btn-group-lg">
+        <button class="btn btn-success">Button Child</button>   
+        <button class="btn btn-success">Button Child</button>
+        <button class="btn btn-success">Button Child</button>
+        <button class="btn btn-success">Button Child</button>
+    </div>
+</body>
+</html>
