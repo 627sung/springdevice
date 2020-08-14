@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!--
+        bootstrap은 반응형 홈페이지 개념이 탑재되어 있다.
+        기본적으로 화면은 100%의 폭을 가진다
+        
+        가장 바깥쪽 영역을 container라고 부른다
+        
+        .container 는 폭 구간마다 최적화된 형태로 변한다
+        .container-fluid 는 100%를 기준으로 부드럽게 변한다
+    -->
+    <div class="container-fluid">
+
+        <!--
+            container 내부에는 줄(row)을 생성하여 배치의 기준을 잡도록 되어 있다.
+        -->
+        <div class="row">
+
+            <!--
+                row 내부에는 칸(col)을 생성할 수 있으며 기본적으로 12등분 되어 있다.                
+                배치 개수에 따라 자동으로 12칸을 나눠갖게 된다
+                .col : 일반 컬럼
+                .col-lg : 넓음(992px) 정도의 폭을 기준으로 100%가 되거나 분할된다.
+                .col-md : 중간(768px) 정도의 폭을 기준으로 100%가 되거나 분할된다.
+                .col-sm : 좁음(576px) 정도의 폭을 기준으로 100%가 되거나 분할된다.
+            -->
+            <div class="col-lg">
+                <h1>Hello World</h1>
+            </div>
+            <div class="col-lg">
+                <h1>Hello World</h1>
+            </div>
+            <div class="col-lg">
+                <h1>Hello World</h1>
+           
+        </div>
+        
+    </div>
+    
+</body>
+</html>
